@@ -6,6 +6,9 @@ const path = require("path");
 
 // MODULE IMPORTS
 const conn = require("./config/config"); //database connection
+const userRoutes = require("./routes/userRoutes"); //user routes
+const productRoutes = require("./routes/productRoutes"); //product routes
+
 
 // INITIALIZATION
 const PORT = process.env.PORT || 8007; // SET PORT
@@ -15,6 +18,9 @@ conn();
 //MIDDLEWARE
 app.use(express.json()); // PARSE JSON
 app.use(express.urlencoded({ extended: false })); // PARSE URLENCODED
+app.use("/api/user", userRoutes);
+app.use("/api/product", productRoutes);
+
 
 //CONNECTION
 app.listen(PORT, (err) => {
